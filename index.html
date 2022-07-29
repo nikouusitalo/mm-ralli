@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+ <style>
+#map {  
+  height: 800px;
+  width: 800px;} 
+ </style> 
+</head>
+<body>
+   <h2>MM-ralli 2022</h2>
+  <div id="map"></div>
+  
+  <script>
+    var mymap = L.map('map').setView([62.239698, 25.749213], 14);
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+      tileSize: 512,
+    maxZoom: 20,
+    id: 'mapbox/streets-v11',
+    accessToken: 'Salainen-API-avain-tähän',
+    zoomOffset: -1
+  }).addTo(mymap);
+  
+
+    var marker = L.marker([ 62.242143, 25.748486 ]).addTo(mymap);
+
+    var circle = L.circle([ 62.244863, 25.740577 ], {
+      color: 'yellow',
+      fillColor: '#f1485',
+      fillOpacity: 0.5,
+      radius: 400
+    }).addTo(mymap);
+    circle.bindPopup("Harjun EK");
+
+    let polygon = L.polygon([
+      [62.239303, 25.751796],
+      [62.239303, 25.755391],
+      [62.237963, 25.755291],
+      [62.237963, 25.751496]
+    ]).addTo(mymap);
+    polygon.bindPopup("MM-ralli - Kilpailukeskus");
+
+  </script> 
+</body>
+</html>
